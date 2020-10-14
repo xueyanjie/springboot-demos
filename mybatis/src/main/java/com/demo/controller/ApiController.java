@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import com.demo.utils.ApiResponse;
 import com.demo.entity.Student;
 import com.demo.mapper.StudentMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,8 @@ public class ApiController {
     private StudentMapper studentMapper;
 
     @RequestMapping("getStudents")
-    public List<Student> getStudents() {
-        return studentMapper.findAll();
+    public ApiResponse<List<Student>> getStudents() {
+        List<Student> list = studentMapper.findAll();
+        return ApiResponse.retOK(list);
     }
 }

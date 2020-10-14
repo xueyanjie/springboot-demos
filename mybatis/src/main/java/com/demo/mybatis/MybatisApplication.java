@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.demo.*"})
-@MapperScan("com.demo.mapper")
+@ComponentScan(basePackages = {"com.demo.*"}) //主要顾及RestController注解
+@MapperScan("com.demo.mapper") //识别Mapper
 public class MybatisApplication {
 
     public static void main(String[] args) {
