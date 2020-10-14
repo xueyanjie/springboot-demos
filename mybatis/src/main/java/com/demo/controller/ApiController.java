@@ -3,6 +3,7 @@ package com.demo.controller;
 import com.demo.utils.ApiResponse;
 import com.demo.entity.Student;
 import com.demo.mapper.StudentMapper;
+import com.demo.utils.DateTimeTools;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +19,7 @@ public class ApiController {
     @Resource
     private StudentMapper studentMapper;
 
-    @RequestMapping("getStudents") // http://localhost:8080/api/getStudents
+    @RequestMapping("getAll") // http://localhost:8080/api/getAll
     public ApiResponse<List<Student>> getStudents() {
         List<Student> list = studentMapper.findAll();
         return ApiResponse.retOK(list);
@@ -32,5 +33,16 @@ public class ApiController {
         }
         Student stu = studentMapper.findById(idVal);
         return ApiResponse.retOK(stu);
+    }
+
+    @RequestMapping("insertSingle")  // http://localhost:8080/api/insertSingle?name=xyj&age=31
+    public ApiResponse<Integer> insertSingle(@RequestParam(value = "name") String name
+            , @RequestParam(value = "age") int age) {
+        Student stu = new Student();
+        stu.setName(name);
+        stu.setAge(age);
+        stu.setInsert_time(DateTimeTools.formatNow());
+        int insertId = studentMapper.insertStudent(stu);
+        return ApiResponse.retOK(insertId); //todo:insertId不对！！！！！！！
     }
 }

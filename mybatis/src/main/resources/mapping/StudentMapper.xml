@@ -9,4 +9,17 @@
         SELECT * FROM student WHERE id = #{id}
     </select>
     <!-- 插入数据 -->
+    <!--
+    statementType:
+    STATEMENT，PREPARED 或 CALLABLE 的一个。这会让 MyBatis
+    分别使用 Statement，PreparedStatement 或 CallableStatement，默认值：PREPARED。
+
+    keyColumn:
+    当主键列不是表中的第一列的时候需要设置
+    -->
+    <insert id="insertStudent" parameterType="com.demo.entity.Student" useGeneratedKeys="true"
+            keyProperty="id">
+      insert into student (name,age,insert_time)
+      values (#{name},#{age},#{insert_time})
+    </insert>
 </mapper>
