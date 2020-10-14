@@ -4,4 +4,9 @@
     <select id="findAll" resultType="Student">
         SELECT * FROM student
     </select>
+    <!-- # 和 $ 有区别，后者不防注入 -->
+    <select id="findById" parameterType="int" resultType="Student">
+        SELECT * FROM student WHERE id = #{id}
+    </select>
+    <!-- 插入数据 -->
 </mapper>
