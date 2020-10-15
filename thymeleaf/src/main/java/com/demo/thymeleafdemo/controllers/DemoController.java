@@ -9,7 +9,7 @@ public class DemoController {
 
     @RequestMapping("/hello")
     public String hello(ModelMap map) {
-        map.addAttribute("name", "野猪先生");
+        map.addAttribute("name", "野猪先生XYJ");
         return "demo";
     }
 
