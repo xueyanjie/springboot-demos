@@ -42,7 +42,7 @@ public class ApiController {
         stu.setName(name);
         stu.setAge(age);
         stu.setInsert_time(DateTimeTools.formatNow());
-        int insertId = studentMapper.insertStudent(stu);
-        return ApiResponse.retOK(insertId); //todo:insertId不对！！！！！！！
+        studentMapper.insertStudent(stu); //返回的是受影响行数
+        return ApiResponse.retOK(stu.getId());
     }
 }
