@@ -15,7 +15,7 @@ public class ApiController {
     @RequestMapping("set")
     public String setInfo() {
         boolean res = redisUtil.set("test", "Hello redis !");
-        redisUtil.expire("test", 86400);
+        redisUtil.expire("test", 86400); //todo:set方法也有带expire的重载
         return String.valueOf(res);
     }
 
