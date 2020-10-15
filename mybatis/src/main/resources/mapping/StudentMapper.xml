@@ -19,7 +19,6 @@
     -->
     <insert id="insertStudent" parameterType="com.demo.entity.Student" useGeneratedKeys="true"
             keyProperty="id">
-      insert into student (name,age,insert_time)
-      values (#{name},#{age},#{insert_time})
+      insert into student (name,age,insert_time) values (#{name},#{age},#{insert_time})
     </insert>
 </mapper>
